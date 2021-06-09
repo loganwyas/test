@@ -34,7 +34,7 @@ for i, row in enumerate(sheet):
         good = False
         for x in text:
             val = x.strip('\n')
-            if url == val:
+            if url in val:
                 good = True
         if not good:
             element = []
@@ -54,7 +54,7 @@ for i, h in enumerate(headers):
 if len(filtered) != 0:
     for r in range(1, len(filtered)+1):
         for c in range(len(filtered[0])):
-            if c > len(filtered[r-1]):
+            if c >= len(filtered[r-1]):
                 newSheet.cell(row=r+1, column=c+1, value=None)
             else:
                 newSheet.cell(row=r+1, column=c+1, value=filtered[r-1][c])

@@ -54,5 +54,8 @@ for i, h in enumerate(headers):
 if len(filtered) != 0:
     for r in range(1, len(filtered)+1):
         for c in range(len(filtered[0])):
-            newSheet.cell(row=r+1, column=c+1, value=filtered[r-1][c])
+            if c > len(filtered[r-1]):
+                newSheet.cell(row=r+1, column=c+1, value=None)
+            else:
+                newSheet.cell(row=r+1, column=c+1, value=filtered[r-1][c])
 newFile.save(filename=newFilename)
